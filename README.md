@@ -255,7 +255,3 @@ Passionate about:
 - Cloud Computing
 
 ---
-
-## ⭐ If you like this project
-
-Give it a ⭐ on GitHub and support the project!
