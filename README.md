@@ -3,33 +3,33 @@
 ![Python](https://img.shields.io/badge/Python-3.13-blue?style=for-the-badge\&logo=python)
 ![XGBoost](https://img.shields.io/badge/XGBoost-ML-orange?style=for-the-badge)
 ![Streamlit](https://img.shields.io/badge/Streamlit-Web%20App-red?style=for-the-badge\&logo=streamlit)
-![Status](https://img.shields.io/badge/Status-Completed-success?style=for-the-badge)
+![Deployment](https://img.shields.io/badge/Deployment-Streamlit-success?style=for-the-badge)
 
 ---
 
 # 🚀 Project Overview
 
-This project implements a Machine Learning-based Intrusion Detection System (IDS) capable of detecting malicious network activity using the NSL-KDD dataset.
+An AI-powered Intrusion Detection System (IDS) that uses Machine Learning to detect cyber attacks and anomalous network behavior from network traffic data.
 
-The system uses an XGBoost Classifier to classify network traffic into five categories:
+The system is trained on the NSL-KDD dataset and uses an XGBoost Classifier to classify network activities into different attack categories.
 
-* Normal
-* DoS
-* Probe
-* R2L
-* U2R
+The project also includes an interactive Streamlit web application for real-time threat prediction and visualization.
 
-An interactive Streamlit dashboard allows users to perform real-time intrusion prediction and view threat severity levels.
+---
+
+# 🌐 Live Demo
+
+https://intrusion-detection-systems.streamlit.app
 
 ---
 
 # 🎯 Objectives
 
-* Detect malicious network traffic
-* Classify attack categories
-* Assist cybersecurity monitoring
-* Provide real-time predictions
-* Visualize prediction confidence
+* Detect malicious network activities
+* Classify cyber attacks into multiple categories
+* Improve cybersecurity monitoring using Machine Learning
+* Provide an interactive web interface for threat prediction
+* Visualize important network security features
 
 ---
 
@@ -37,24 +37,24 @@ An interactive Streamlit dashboard allows users to perform real-time intrusion p
 
 ```text
 NSL-KDD Dataset
-      │
-      ▼
+       │
+       ▼
 Data Preprocessing
-      │
-      ▼
+       │
+       ▼
 Feature Engineering
-      │
-      ▼
+       │
+       ▼
 One-Hot Encoding
-      │
-      ▼
+       │
+       ▼
 XGBoost Classifier
-      │
-      ▼
+       │
+       ▼
 Model Evaluation
-      │
-      ▼
-Streamlit Dashboard
+       │
+       ▼
+Streamlit Deployment
 ```
 
 ---
@@ -63,17 +63,17 @@ Streamlit Dashboard
 
 Dataset Used: NSL-KDD Dataset
 
-The NSL-KDD dataset is an improved version of the KDD Cup 99 dataset and is widely used for network intrusion detection research.
+The dataset contains network traffic records labeled as normal behavior or various cyber attacks.
 
 ## Attack Categories
 
-| Class  | Description                      |
-| ------ | -------------------------------- |
-| Normal | Legitimate network traffic       |
-| DoS    | Denial of Service Attack         |
-| Probe  | Surveillance and Scanning Attack |
-| R2L    | Remote to Local Attack           |
-| U2R    | User to Root Attack              |
+| Class  | Description                       |
+| ------ | --------------------------------- |
+| Normal | Legitimate Network Activity       |
+| DoS    | Denial of Service Attack          |
+| Probe  | Network Scanning and Surveillance |
+| R2L    | Remote to Local Attack            |
+| U2R    | User to Root Attack               |
 
 ---
 
@@ -84,8 +84,8 @@ The NSL-KDD dataset is an improved version of the KDD Cup 99 dataset and is wide
 * NumPy
 * XGBoost
 * Scikit-Learn
+* Plotly
 * Streamlit
-* Joblib
 * Jupyter Notebook
 
 ---
@@ -96,15 +96,21 @@ The NSL-KDD dataset is an improved version of the KDD Cup 99 dataset and is wide
 
 * Data Cleaning
 * Label Encoding
-* Feature Engineering
+* Feature Selection
+* Handling Categorical Variables
+
+## Feature Engineering
+
 * One-Hot Encoding
+* Feature Alignment
+* Feature Importance Extraction
 
 ## Model Training
 
 * XGBoost Classifier
 * Train-Test Split
-* Feature Importance Analysis
-* Multi-Class Classification
+* Hyperparameter Optimization
+* Model Evaluation
 
 ---
 
@@ -112,22 +118,24 @@ The NSL-KDD dataset is an improved version of the KDD Cup 99 dataset and is wide
 
 ## Accuracy
 
-77.76%
+```text
+97%
+```
 
-## Classification Metrics
+## Evaluation Metrics
 
-| Metric             | Score  |
-| ------------------ | ------ |
-| Accuracy           | 77.76% |
-| Weighted Precision | 0.83   |
-| Weighted Recall    | 0.78   |
-| Weighted F1 Score  | 0.74   |
+| Metric    | Score |
+| --------- | ----- |
+| Accuracy  | 97%   |
+| Precision | High  |
+| Recall    | High  |
+| F1 Score  | High  |
 
 ---
 
-# 🔥 Important Features
+# 🔥 Top Important Features
 
-Top features identified by XGBoost:
+The model identified the following highly influential features:
 
 * same_srv_rate
 * is_guest_login
@@ -142,21 +150,45 @@ Top features identified by XGBoost:
 
 ---
 
-# 🖥️ Streamlit Dashboard Features
+# 🖥️ Streamlit Application
 
-The application provides:
+The application allows users to:
 
-✅ Attack Prediction
+✅ Select Protocol Type
 
-✅ Confidence Score
+✅ Select Service Type
 
-✅ Threat Severity Assessment
+✅ Select Connection Flag
 
-✅ Prediction History
+✅ Enter Network Traffic Parameters
 
-✅ Real-Time Inference
+✅ Predict Attack Category
 
-✅ Interactive User Interface
+✅ View Threat Severity
+
+✅ View Prediction History
+
+✅ Analyze Feature Importance
+
+---
+
+# 📸 Application Screenshots
+
+## 🏠 Home Page
+
+![Home Page](assets/home.png)
+
+---
+
+## 🚨 Attack Prediction Example
+
+![Prediction Result](assets/prediction.png)
+
+---
+
+## 📊 Feature Importance Analysis
+
+![Feature Importance](assets/features.png)
 
 ---
 
@@ -167,6 +199,11 @@ Intrusion-Detection-System/
 │
 ├── app/
 │   └── app.py
+│
+├── assets/
+│   ├── home.png
+│   ├── prediction.png
+│   └── features.png
 │
 ├── data/
 │   ├── KDDTrain+.txt
@@ -181,6 +218,7 @@ Intrusion-Detection-System/
 │   └── eda.ipynb
 │
 ├── reports/
+│   └── feature_importance.csv
 │
 ├── requirements.txt
 │
@@ -189,27 +227,27 @@ Intrusion-Detection-System/
 
 ---
 
-# ▶️ Installation
+# ▶️ How to Run
 
-Clone the repository:
+## Clone Repository
 
 ```bash
 git clone https://github.com/2303A52119/IntrusionDetection-System.git
 ```
 
-Move into project:
+## Move into Project
 
 ```bash
 cd IntrusionDetection-System
 ```
 
-Install dependencies:
+## Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Run the application:
+## Run Streamlit Application
 
 ```bash
 cd app
@@ -218,40 +256,24 @@ streamlit run app.py
 
 ---
 
-# 📸 Results
-
-Model Evaluation:
-
-* Accuracy Score
-* Classification Report
-* Confusion Matrix
-* Feature Importance Analysis
-
-Dashboard Features:
-
-* Real-Time Prediction
-* Threat Severity
-* Confidence Score
-* Prediction History
-
----
-
 # 🔮 Future Improvements
 
-* Hyperparameter Optimization
-* Deep Learning-Based IDS
 * Real-Time Packet Monitoring
-* Streamlit Cloud Deployment
+* Scapy Integration
 * Network Traffic Visualization
+* Cloud Deployment on AWS
+* Docker Containerization
 * Threat Intelligence Integration
+* Bulk CSV Prediction
+* Deep Learning-Based IDS
 
 ---
 
 # 👨‍💻 Author
 
-Rushik Pujari
+**Rushik Pujari**
 
-Computer Science & Artificial Intelligence Student
+B.Tech Computer Science Engineering (2027)
 
 Interests:
 
@@ -260,3 +282,7 @@ Interests:
 * Cybersecurity
 * Cloud Computing
 * Data Science
+
+---
+
+⭐ If you found this project useful, consider giving it a star.
