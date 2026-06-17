@@ -119,7 +119,7 @@ The dataset contains network traffic records labeled as normal behavior or vario
 ## Accuracy
 
 ```text
-97%
+87%
 ```
 
 ## Evaluation Metrics
