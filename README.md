@@ -126,7 +126,7 @@ The dataset contains network traffic records labeled as normal behavior or vario
 
 | Metric    | Score |
 | --------- | ----- |
-| Accuracy  | 97%   |
+| Accuracy  | 87%   |
 | Precision | High  |
 | Recall    | High  |
 | F1 Score  | High  |
