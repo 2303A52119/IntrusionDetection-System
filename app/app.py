@@ -2,22 +2,30 @@ import streamlit as st
 import pandas as pd
 import joblib
 import plotly.express as px
+from pathlib import Path
+
 # =========================
-# LOAD MODEL
+# LOAD FILES (STREAMLIT CLOUD SAFE)
 # =========================
 
-model = joblib.load("../models/xgboost_ids.pkl")
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+model = joblib.load(
+    BASE_DIR / "models" / "xgboost_ids.pkl"
+)
 
 label_encoder = joblib.load(
-    "../models/label_encoder_xgb.pkl"
+    BASE_DIR / "models" / "label_encoder_xgb.pkl"
 )
 
 feature_columns = joblib.load(
-    "../models/feature_columns_xgb.pkl"
+    BASE_DIR / "models" / "feature_columns_xgb.pkl"
 )
+
 feature_importance_df = pd.read_csv(
-    "../reports/feature_importance.csv"
+    BASE_DIR / "reports" / "feature_importance.csv"
 )
+
 # =========================
 # SESSION HISTORY
 # =========================
@@ -266,7 +274,8 @@ if len(st.session_state.history) > 0:
     st.dataframe(
         pd.DataFrame(
             st.session_state.history
-        )
+        ),
+        width="stretch"
     )
 else:
     st.write(
@@ -274,6 +283,10 @@ else:
     )
 
 st.divider()
+
+# =========================
+# FEATURE IMPORTANCE
+# =========================
 
 st.subheader(
     "📈 Top Important Features"
@@ -300,8 +313,9 @@ fig.update_layout(
 
 st.plotly_chart(
     fig,
-    use_container_width=True
+    width="stretch"
 )
+
 st.caption(
     "Built using XGBoost, Streamlit, and the NSL-KDD Dataset"
 )
