@@ -1,19 +1,20 @@
-# 🛡️ Intrusion Detection System using XGBoost
+# 🛡️ Intrusion Detection System using Machine Learning
 
 ![Python](https://img.shields.io/badge/Python-3.13-blue?style=for-the-badge\&logo=python)
 ![XGBoost](https://img.shields.io/badge/XGBoost-ML-orange?style=for-the-badge)
-![Streamlit](https://img.shields.io/badge/Streamlit-Web%20App-red?style=for-the-badge\&logo=streamlit)
-![Deployment](https://img.shields.io/badge/Deployment-Streamlit-success?style=for-the-badge)
+![SHAP](https://img.shields.io/badge/SHAP-Explainable_AI-purple?style=for-the-badge)
+![SMOTE](https://img.shields.io/badge/SMOTE-Imbalanced_Data-success?style=for-the-badge)
+![Streamlit](https://img.shields.io/badge/Streamlit-Web_App-red?style=for-the-badge\&logo=streamlit)
 
 ---
 
 # 🚀 Project Overview
 
-An AI-powered Intrusion Detection System (IDS) that uses Machine Learning to detect cyber attacks and anomalous network behavior from network traffic data.
+An AI-powered Intrusion Detection System (IDS) designed to detect malicious network traffic using advanced Machine Learning techniques.
 
-The system is trained on the NSL-KDD dataset and uses an XGBoost Classifier to classify network activities into different attack categories.
+The project uses the **UNSW-NB15** cybersecurity dataset and incorporates modern preprocessing, feature engineering, explainable AI, and ensemble learning techniques to classify network attacks accurately.
 
-The project also includes an interactive Streamlit web application for real-time threat prediction and visualization.
+The repository also contains a Streamlit web application for real-time intrusion prediction.
 
 ---
 
@@ -25,35 +26,45 @@ https://intrusion-detection-systems.streamlit.app
 
 # 🎯 Objectives
 
-* Detect malicious network activities
-* Classify cyber attacks into multiple categories
-* Improve cybersecurity monitoring using Machine Learning
-* Provide an interactive web interface for threat prediction
-* Visualize important network security features
+* Detect malicious network traffic
+* Classify multiple cyber attack categories
+* Improve IDS performance using feature engineering
+* Handle imbalanced datasets
+* Explain model decisions using SHAP
+* Deploy an interactive prediction dashboard
 
 ---
 
-# 🏗️ Project Architecture
+# 🏗️ Project Pipeline
 
 ```text
-NSL-KDD Dataset
-       │
-       ▼
-Data Preprocessing
-       │
-       ▼
-Feature Engineering
-       │
-       ▼
+UNSW-NB15 Dataset
+        │
+        ▼
+Data Cleaning
+        │
+        ▼
+Label Encoding
+        │
+        ▼
 One-Hot Encoding
-       │
-       ▼
+        │
+        ▼
+Feature Engineering
+        │
+        ▼
+SMOTE Oversampling
+        │
+        ▼
+SHAP Feature Selection
+        │
+        ▼
 XGBoost Classifier
-       │
-       ▼
+        │
+        ▼
 Model Evaluation
-       │
-       ▼
+        │
+        ▼
 Streamlit Deployment
 ```
 
@@ -61,19 +72,24 @@ Streamlit Deployment
 
 # 📊 Dataset
 
-Dataset Used: NSL-KDD Dataset
+Dataset Used:
 
-The dataset contains network traffic records labeled as normal behavior or various cyber attacks.
+**UNSW-NB15 Dataset**
 
-## Attack Categories
+The dataset contains modern network traffic generated in realistic cyber attack scenarios.
 
-| Class  | Description                       |
-| ------ | --------------------------------- |
-| Normal | Legitimate Network Activity       |
-| DoS    | Denial of Service Attack          |
-| Probe  | Network Scanning and Surveillance |
-| R2L    | Remote to Local Attack            |
-| U2R    | User to Root Attack               |
+### Attack Categories
+
+* Analysis
+* Backdoor
+* DoS
+* Exploits
+* Fuzzers
+* Generic
+* Normal
+* Reconnaissance
+* Shellcode
+* Worms
 
 ---
 
@@ -82,10 +98,12 @@ The dataset contains network traffic records labeled as normal behavior or vario
 * Python
 * Pandas
 * NumPy
-* XGBoost
 * Scikit-Learn
-* Plotly
+* XGBoost
+* SHAP
+* Imbalanced-Learn (SMOTE)
 * Streamlit
+* Plotly
 * Jupyter Notebook
 
 ---
@@ -94,101 +112,79 @@ The dataset contains network traffic records labeled as normal behavior or vario
 
 ## Data Preprocessing
 
-* Data Cleaning
+* Missing Value Handling
 * Label Encoding
-* Feature Selection
-* Handling Categorical Variables
+* One-Hot Encoding
+* Feature Alignment
 
 ## Feature Engineering
 
-* One-Hot Encoding
-* Feature Alignment
-* Feature Importance Extraction
+* Derived Network Features
+* Packet Ratio Features
+* Byte Ratio Features
+* Statistical Features
+
+## Handling Imbalanced Data
+
+* SMOTE Oversampling
+* Class Distribution Balancing
+
+## Explainable AI
+
+* SHAP Feature Importance
+* Top Feature Selection
 
 ## Model Training
 
-* XGBoost Classifier
-* Train-Test Split
-* Hyperparameter Optimization
+* XGBoost Multi-Class Classifier
+* Hyperparameter Tuning
 * Model Evaluation
 
 ---
 
-# 📈 Model Performance
+# 📈 Current Model Performance
 
-## Accuracy
+| Metric   |      Value |
+| -------- | ---------: |
+| Accuracy | **76.18%** |
+| Classes  |         10 |
+| Dataset  |  UNSW-NB15 |
 
-```text
-87%
-```
-
-## Evaluation Metrics
-
-| Metric    | Score |
-| --------- | ----- |
-| Accuracy  | 87%   |
-| Precision | High  |
-| Recall    | High  |
-| F1 Score  | High  |
+> **Note:** The project is under active development. Future versions will include advanced ensemble learning, Optuna optimization, and stacking models to improve performance.
 
 ---
 
 # 🔥 Top Important Features
 
-The model identified the following highly influential features:
+Examples of the most influential network features identified using SHAP:
 
-* same_srv_rate
-* is_guest_login
-* service_ecr_i
-* src_bytes
-* service_http
-* root_shell
-* diff_srv_rate
-* num_failed_logins
-* num_compromised
-* service_eco_i
+* pkt_size_ratio
+* sttl
+* ct_dst_src_ltm
+* sbytes
+* smean
+* ct_srv_dst
+* byte_ratio
+* service_dns
+* proto_udp
+* ct_srv_src
+* ct_src_dport_ltm
 
 ---
 
 # 🖥️ Streamlit Application
 
-The application allows users to:
+The application supports:
 
-✅ Select Protocol Type
+✅ Network traffic prediction
 
-✅ Select Service Type
+✅ Attack category classification
 
-✅ Select Connection Flag
+✅ Threat severity visualization
 
-✅ Enter Network Traffic Parameters
+✅ Feature importance visualization
 
-✅ Predict Attack Category
-
-✅ View Threat Severity
-
-✅ View Prediction History
-
-✅ Analyze Feature Importance
-
----
-
-# 📸 Application Screenshots
-
-## 🏠 Home Page
-
-![Home Page](assets/home.png)
-
----
-
-## 🚨 Attack Prediction Example
-
-![Prediction Result](assets/prediction.png)
-
----
-
-## 📊 Feature Importance Analysis
-
-![Feature Importance](assets/features.png)
+✅ Interactive prediction interface
 
 ---
 
@@ -197,28 +193,27 @@ The application allows users to:
 ```text
 Intrusion-Detection-System/
 │
-├── app/
-│   └── app.py
-│
-├── assets/
-│   ├── home.png
-│   ├── prediction.png
-│   └── features.png
+├── app.py
 │
 ├── data/
-│   ├── KDDTrain+.txt
-│   └── KDDTest+.txt
+│   └── UNSW-NB15/
 │
 ├── models/
-│   ├── xgboost_ids.pkl
-│   ├── label_encoder_xgb.pkl
-│   └── feature_columns_xgb.pkl
+│   ├── xgboost_ids_v5.pkl
+│   ├── feature_columns_xgb_v5.pkl
+│   └── label_encoder_xgb_v5.pkl
 │
 ├── notebooks/
-│   └── eda.ipynb
+│   ├── eda.ipynb
+│   ├── ids_v2_unsw.ipynb
+│   ├── ids_v3_xgboost_unsw.ipynb
+│   ├── ids_v4_catboost_tuned.ipynb
+│   ├── ids_v5_feature_selection.ipynb
+│   ├── ids_v7_smote_xgboost.ipynb
+│   ├── ids_v8_feature_engineering.ipynb
+│   └── ids_v9_shap_optuna.ipynb
 │
 ├── reports/
-│   └── feature_importance.csv
 │
 ├── requirements.txt
 │
@@ -227,30 +222,29 @@ Intrusion-Detection-System/
 
 ---
 
-# ▶️ How to Run
+# ▶️ Installation
 
-## Clone Repository
+Clone the repository
 
 ```bash
 git clone https://github.com/2303A52119/IntrusionDetection-System.git
 ```
 
-## Move into Project
+Move into the project
 
 ```bash
 cd IntrusionDetection-System
 ```
 
-## Install Dependencies
+Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## Run Streamlit Application
+Run the Streamlit application
 
 ```bash
-cd app
 streamlit run app.py
 ```
 
@@ -258,14 +252,16 @@ streamlit run app.py
 
 # 🔮 Future Improvements
 
+* Optuna Hyperparameter Optimization
+* LightGBM Integration
+* CatBoost + XGBoost Stacking
+* Ensemble Learning
+* Explainable AI Dashboard
 * Real-Time Packet Monitoring
 * Scapy Integration
-* Network Traffic Visualization
-* Cloud Deployment on AWS
-* Docker Containerization
-* Threat Intelligence Integration
-* Bulk CSV Prediction
-* Deep Learning-Based IDS
+* Docker Deployment
+* AWS Deployment
+* Bulk CSV Prediction API
 
 ---
 
@@ -275,10 +271,11 @@ streamlit run app.py
 
 B.Tech Computer Science Engineering (2027)
 
-Interests:
+### Interests
 
 * Artificial Intelligence
 * Machine Learning
+* Explainable AI
 * Cybersecurity
 * Cloud Computing
 * Data Science
